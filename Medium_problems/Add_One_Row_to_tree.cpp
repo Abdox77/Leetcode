@@ -32,12 +32,23 @@ If depth == 1 that means there is no depth depth - 1 at all, then create a tree 
  * };
  */
 
+#include <cstdlib>
+#define NULL 0
+
+struct TreeNode {
+   int val;
+   TreeNode *left;
+   TreeNode *right;
+   TreeNode() : val(0), left(nullptr), right(nullptr) {}
+   TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+   TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+};
 
 class Solution {
 public:
     TreeNode* add_node(TreeNode *root, int val, int depth, int curr){
         if (!root)
-            return (NULL);
+            return NULL;
         if (curr == depth -1){
             TreeNode *lTmp = root->left;
             TreeNode *rTmp = root->right;
@@ -65,3 +76,4 @@ public:
         return add_node(root,val, depth, 1);
     }
 };
+
